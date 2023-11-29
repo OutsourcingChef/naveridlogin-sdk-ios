@@ -4,20 +4,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "naveridlogin-sdk-ios",
+    name: "NaverOpenSDK",
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "naveridlogin-sdk-ios",
-            targets: ["naveridlogin-sdk-ios"]),
+        .library(name: "NaverOpenSDK", targets: ["NaverOpenSDK"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "naveridlogin-sdk-ios"),
-        .testTarget(
-            name: "naveridlogin-sdk-iosTests",
-            dependencies: ["naveridlogin-sdk-ios"]),
+        .binaryTarget(name: "NaverThirdPartyLogin", path: "./Frameworks/NaverThirdPartyLogin.xcframework"),
+        .target(name: "NaverOpenSDK", dependencies: ["NaverThirdPartyLogin"]), 
     ]
 )
